@@ -1,0 +1,40 @@
+{
+  "name": "github-runner-lambda-syncer",
+  "version": "1.0.0",
+  "main": "lambda.ts",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node-dev src/local.ts",
+    "test": "NODE_ENV=test jest",
+    "test:watch": "NODE_ENV=test jest --watch",
+    "lint": "yarn eslint src",
+    "watch": "ts-node-dev --respawn --exit-child src/local.ts",
+    "build": "ncc build src/lambda.ts -o dist",
+    "dist": "yarn build && cd dist && zip ../runner-binaries-syncer.zip index.js",
+    "format": "prettier --write \"**/*.ts\"",
+    "format-check": "prettier --check \"**/*.ts\""
+  },
+  "devDependencies": {
+    "@octokit/rest": "^18.12.0",
+    "@trivago/prettier-plugin-sort-imports": "^3.2.0",
+    "@types/jest": "^27.5.0",
+    "@types/node": "^18.0.0",
+    "@types/request": "^2.48.8",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "@vercel/ncc": "^0.34.0",
+    "aws-sdk": "^2.1160.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "jest": "^27.5.1",
+    "jest-mock": "^28.1.1",
+    "prettier": "2.7.1",
+    "ts-jest": "^27.1.4",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "tslog": "^3.3.3"
+  }
+}
